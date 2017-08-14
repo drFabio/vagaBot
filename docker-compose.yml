@@ -1,0 +1,12 @@
+---
+version: "3"
+services:
+  vagaBot:
+    image: "python:3.6.2-alpine3.4"
+    command: "sh -c 'while sleep 3600; do :; done'" #keeps the container alive for 2 way networking to work, test is ran with docker-compose exec
+    volumes:
+      - ./app:/etc/app
+    working_dir: /etc/app
+    build:
+      context: ./dockerImages
+      dockerfile: vagaBot.dockerfile

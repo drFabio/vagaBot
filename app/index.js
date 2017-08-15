@@ -1,5 +1,5 @@
 const phantom = require('phantom')
-const jobBoardSpider = require('./spiders/jobBoard')
+const jobBoardSpider = require('./spiders/jobBoardSpider')
 const fs = require('fs')
 const promisify = require('util').promisify
 const saveFile = promisify(fs.writeFile)

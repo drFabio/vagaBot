@@ -20,7 +20,6 @@ async function jobBoard (page) {
     })
     const ret =[]
     for (let position of positions){
-      console.log('going to', position.link);
       ret.push(await positionSpider(page, position.link))
     }
     return ret

@@ -1,7 +1,7 @@
 async function positionSpider (page, link){
   const status = await page.open(link)
   const content = await page.property('content')
-  const data = await page.evaluate(function() {
+  return await page.evaluate(function(link) {
     var title = document.querySelector('.job-heading').innerText
     var description = document.querySelector('.job-description').innerText
     var tags = []
@@ -13,9 +13,8 @@ async function positionSpider (page, link){
       title: title,
       description: description,
       tags: tags,
+      link: link
     }
-  })
-  data.link = link
-  return data
+  }, link)
 }
 module.exports = positionSpider

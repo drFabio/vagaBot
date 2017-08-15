@@ -8,7 +8,6 @@ try {
     const instance = await phantom.create()
     const page = await instance.createPage()
     const positions = await jobBoardSpider(page)
-    console.log(positions);
     await instance.exit()
     const positionsJson = JSON.stringify(positions, null, 2)
     saveFile('./workingNomadsPositions.json', positionsJson)

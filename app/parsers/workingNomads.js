@@ -2,8 +2,8 @@ function evaluateJobBoard() {
   function parsePosition (positionNode) {
     var anchor = positionNode.querySelectorAll('.media-body h4 a')[1]
     return {
-      title: anchor.innerText,
-      link: 'https://www.workingnomads.co/' + anchor.getAttribute('href')
+      link: 'https://www.workingnomads.co' + anchor.getAttribute('href'),
+      company: positionNode.querySelector('.company').innerText
     }
   }
   var positionData = []
@@ -14,7 +14,7 @@ function evaluateJobBoard() {
   return positionData
 }
 
-function evaluatePosition(link) {
+function evaluatePosition(positionData) {
   var title = document.querySelector('.job-heading').innerText
   var description = document.querySelector('.job-description').innerText
   var tags = []
@@ -26,7 +26,8 @@ function evaluatePosition(link) {
     title: title,
     description: description,
     tags: tags,
-    link: link
+    link: positionData.link,
+    company: positionData.company
   }
 }
 module.exports = {

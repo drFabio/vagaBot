@@ -3,6 +3,7 @@ const promisify = require('util').promisify
 const phantom = require('phantom')
 const jobBoardSpider = require('./spiders/jobBoardSpider')
 const context = require('./parsers/remoteCo')
+// const context = require('./parsers/workingNomads')
 
 const saveFile = promisify(fs.writeFile)
 try {

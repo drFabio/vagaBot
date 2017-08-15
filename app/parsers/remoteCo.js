@@ -11,7 +11,7 @@ function evaluateJobBoard (){
   }
   return positionData
 }
-function evaluatePosition (link){
+function evaluatePosition (positionData){
   var title = document.querySelector('.title_sm').innerText
   var description = document.querySelector('.job_description').innerText
   var company = document.querySelector('.co_name').innerText
@@ -19,11 +19,12 @@ function evaluatePosition (link){
     title: title,
     description : description,
     company: company,
-    link:link
+    link: positionData.link
   }
 }
 module.exports ={
   link:'https://remote.co/remote-jobs/developer/',
   evaluateJobBoard,
-  evaluatePosition
+  evaluatePosition,
+  awaitPosition: ['.title_sm', '.job_description', '.co_name']
 }

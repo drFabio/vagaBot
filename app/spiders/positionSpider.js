@@ -1,6 +1,11 @@
-async function positionSpider (page, link,context){
-  const status = await page.open(link)
+const waitForSelector = require('../utils/waitForSelector')
+async function positionSpider (page, positionData,context){
+  console.log(positionData.link)
+  const status = await page.open(positionData.link)
   const content = await page.property('content')
-  return await page.evaluate(context.evaluatePosition, link)
+  if (context.awaitPosition) {
+    await waitForSelector(page , context.awaitPosition)
+  }
+  return await page.evaluate(context.evaluatePosition, positionData)
 }
 module.exports = positionSpider
